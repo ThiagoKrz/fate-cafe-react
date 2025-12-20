@@ -1,0 +1,17 @@
+export const CLASS_MAP: Record<string, string> = {
+  セイバー: "Saber",
+  アーチャー: "Archer",
+  ランサー: "Lancer",
+  ライダー: "Rider",
+  キャスター: "Caster",
+  アサシン: "Assassin",
+  バーサーカー: "Berserker",
+  ルーラー: "Ruler",
+  アヴェンジャー: "Avenger",
+  ムーンキャンサー: "MoonCancer",
+  アルターエゴ: "AlterEgo",
+  フォーリナー: "Foreigner",
+  プリテンダー: "Pretender",
+  ビースト: "Beast",
+  シールダー: "Shielder",
+};
