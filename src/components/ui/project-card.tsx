@@ -73,7 +73,7 @@ export function ProjectCard({
 
           {downloadAvailable ? (
             <Link
-              href="#"
+              to="#"
               className="w-full sm:w-auto text-center bg-[#D4A373] text-[#2A2320] font-bold py-3 px-6 rounded-lg hover:bg-[#C9A66B]"
             >
               Download
