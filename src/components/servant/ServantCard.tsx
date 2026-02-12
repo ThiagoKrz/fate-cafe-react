@@ -24,11 +24,7 @@ export default function ServantCard({ servant }: Props) {
         {servant.name}
       </span>
 
-      {servant.originalName && (
-        <span className="block text-xs text-gray-400 truncate">
-
-        </span>
-      )}
+      
 
       <span className="block text-xs text-[#D4A373] capitalize">
         {servant.className}

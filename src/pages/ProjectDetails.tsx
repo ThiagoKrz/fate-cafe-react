@@ -32,7 +32,7 @@ export default function ProjectDetails() {
 
           <div className="space-y-8">
             <ProjectStatus routes={project.routes} />
-            <ProjectDownload />
+            <ProjectDownload available={true} />
           </div>
         </div>
       </div>

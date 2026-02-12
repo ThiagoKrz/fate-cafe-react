@@ -1,5 +1,5 @@
 // src/util/data/servants.ts
-import { Servant } from "@/types/servant";
+import { Servant } from "@/types/servants";
 
 export const servants: Servant[] = [
   {
