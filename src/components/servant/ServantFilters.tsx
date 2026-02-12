@@ -57,7 +57,7 @@ export default function ServantFilters() {
         }}
         className="bg-[#3E322F] border border-[#5A4A44] rounded px-4 py-2 text-white"
       >
-        <option value="">Todas as classes</option>
+        <option value="">Selecionar Classe</option>
         {classes.map((cls) => (
           <option key={cls} value={cls}>
             {cls || "Todas"}
