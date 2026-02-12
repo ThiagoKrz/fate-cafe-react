@@ -21,8 +21,6 @@ const classes = [
 
 export default function ServantFilters() {
   const {
-    region,
-    setRegion,
     search,
     setSearch,
     servantClass,
@@ -31,16 +29,6 @@ export default function ServantFilters() {
 
   return (
     <div className="flex flex-col md:flex-row gap-4 mb-8">
-      {/* Região */}
-      <select
-        value={region}
-        onChange={(e) => setRegion(e.target.value as "NA" | "JP")}
-        className="bg-[#3E322F] border border-[#5A4A44] rounded px-4 py-2 text-white"
-      >
-        <option value="NA">Servidor NA</option>
-        <option value="JP">Servidor JP</option>
-      </select>
-
       {/* Busca */}
       <input
         value={search}
