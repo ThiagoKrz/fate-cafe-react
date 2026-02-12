@@ -5,9 +5,7 @@ import { AtlasServantFull } from "@/types/atlas-servant-full";
 
 async function fetchServant(region: string, id: string) {
   // Adicionamos ?lang=en no final para forçar o nome/lore em inglês
-  const res = await fetch(
-    `https://api.atlasacademy.io/nice/JP/servant/${id}?lang=en`
-  );
+const res = await fetch(`https://api.atlasacademy.io/nice/JP/servant/${id}?lang=en`);
   const data = await res.json();
   if (data.name) {
     data.name = data.name.replace(/Altria/g, "Artoria");

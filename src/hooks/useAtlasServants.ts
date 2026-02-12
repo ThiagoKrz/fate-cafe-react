@@ -1,4 +1,3 @@
-// src/hooks/useAtlasServants.ts
 import { useEffect, useState } from "react";
 import { AtlasServant } from "@/types/atlas-servant";
 import { useServantContext } from "@/context/ServantContext";
@@ -8,13 +7,13 @@ export function useAtlasServants() {
   const { search, servantClass } = useServantContext();
   const [servants, setServants] = useState<AtlasServant[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null); // Adicionado para o TS não reclamar
+  const [error, setError] = useState<string | null>(null); // Adicionado para o TS
 
   useEffect(() => {
     setLoading(true);
     setError(null);
 
-    // URL que contém TODOS os servos do JP com nomes em Inglês
+    // Usando basic_servant_lang_en da região JP para ter todos os servos em inglês
     fetch(`https://api.atlasacademy.io/export/JP/basic_servant_lang_en.json`)
       .then((res) => res.json())
       .then((data: AtlasServant[]) => {
@@ -28,7 +27,6 @@ export function useAtlasServants() {
             name: displayName.replace(/Altria/g, "Artoria"),
             displayName: displayName.replace(/Altria/g, "Artoria"),
             displayTrueName: trueName.replace(/Altria/g, "Artoria"),
-            // Campos para a busca funcionar com Barghest, etc.
             searchOverwrite: (s.overwriteName || "").toLowerCase(),
             searchTrue: (s.originalName || "").toLowerCase()
           };
@@ -55,9 +53,12 @@ export function useAtlasServants() {
 
         setServants(filtered);
       })
-      .catch(() => setError("Erro ao carregar servos"))
+      .catch((err) => {
+        console.error(err);
+        setError("Erro ao carregar");
+      })
       .finally(() => setLoading(false));
   }, [search, servantClass]);
 
-  return { servants, loading, error }; // Agora retorna o error que o ServantGrid pede
+  return { servants, loading, error }; // Agora retorna o error
 }
