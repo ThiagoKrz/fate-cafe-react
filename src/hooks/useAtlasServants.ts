@@ -3,17 +3,24 @@ import { AtlasServant } from "@/types/atlas-servant";
 import { useServantContext } from "@/context/ServantContext";
 import { CLASS_MAP } from "@/util/servantClassMap";
 
-export function useAtlasServants() {
+// Definimos a interface para o TypeScript saber o que o hook entrega
+interface UseAtlasServantsReturn {
+  servants: AtlasServant[];
+  loading: boolean;
+  error: string | null;
+}
+
+export function useAtlasServants(): UseAtlasServantsReturn {
   const { search, servantClass } = useServantContext();
   const [servants, setServants] = useState<AtlasServant[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null); // Adicionado para o TS
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     setLoading(true);
     setError(null);
 
-    // Usando basic_servant_lang_en da região JP para ter todos os servos em inglês
+    // USANDO O EXPORT JP PARA TER TODOS OS SERVOS
     fetch(`https://api.atlasacademy.io/export/JP/basic_servant_lang_en.json`)
       .then((res) => res.json())
       .then((data: AtlasServant[]) => {
@@ -55,10 +62,10 @@ export function useAtlasServants() {
       })
       .catch((err) => {
         console.error(err);
-        setError("Erro ao carregar");
+        setError("Erro ao carregar servos do JP.");
       })
       .finally(() => setLoading(false));
   }, [search, servantClass]);
 
-  return { servants, loading, error }; // Agora retorna o error
+  return { servants, loading, error };
 }
