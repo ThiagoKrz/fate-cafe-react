@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Traducoes from "./pages/Traducoes";
 import Footer from "./components/footer/Footer";
@@ -9,7 +9,7 @@ import ServantProfile from "./components/servant/ServantProfile";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="flex h-screen w-full bg-[#2A2320] overflow-hidden">
         <div className="h-screen shrink-0">
           <Sidebar />
@@ -30,7 +30,7 @@ function App() {
           </div>
         </div>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
