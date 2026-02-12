@@ -53,14 +53,21 @@ export function Sidebar() {
     >
       {/* Header */}
       <div className="px-4 py-6 flex items-center gap-3">
-        <img
-          src={logo}
-          alt="Fate Café"
-          className={cn(
-            "rounded-full transition-all",
-            collapsed ? "h-10 w-10 mx-auto" : "h-12 w-12"
-          )}
-        />
+        <a 
+          href="https://www.youtube.com/@FateCafé" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="transition-transform hover:scale-110 active:scale-95"
+        >
+          <img
+            src={logo}
+            alt="Fate Café"
+            className={cn(
+              "rounded-full transition-all",
+              collapsed ? "h-10 w-10 mx-auto" : "h-12 w-12"
+            )}
+          />
+        </a>
 
         {!collapsed && (
           <div>
@@ -163,11 +170,17 @@ export function Sidebar() {
       >
         <div className="flex items-center justify-between px-4 py-6">
           <div className="flex items-center gap-3">
-            <img
-              src={logo}
-              alt="Fate Café"
-              className="h-12 w-12 rounded-full"
-            />
+            <a 
+              href="https://www.youtube.com/@FateCafé" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <img
+                src={logo}
+                alt="Fate Café"
+                className="h-12 w-12 rounded-full"
+              />
+            </a>
             <div>
               <h1 className="text-lg font-bold text-[#f5efe6]">
                 Fate Café
