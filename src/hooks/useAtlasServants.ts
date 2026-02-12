@@ -16,14 +16,22 @@ export function useAtlasServants() {
     fetch(`https://api.atlasacademy.io/export/${region}/basic_servant.json`)
       .then((res) => res.json())
       .then((data: AtlasServant[]) => {
-        let filtered = data;
+const correctedData = data.map((s) => ({
+  ...s,
+  name: s.name.replace(/Altria/g, "Artoria"), // Troca em qualquer servo (ex: Altria Lancer -> Artoria Lancer)
+}));
 
-        // Busca
-        if (search.trim()) {
-          filtered = filtered.filter((s) =>
-            s.name.toLowerCase().includes(search.toLowerCase())
-          );
-        }
+let filtered = correctedData;
+
+        // Filtro de Busca
+        if (search.trim()) {
+          filtered = filtered.filter((s) =>
+            s.name.toLowerCase().includes(search.toLowerCase())
+          );
+        }
+        
+        // ... restante do código de filtros de classe ...
+        setServants(filtered);
 
         if (servantClass) {
           const selected = servantClass.toLowerCase();

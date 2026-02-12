@@ -4,10 +4,14 @@ import { useServantContext } from "@/context/ServantContext";
 import { AtlasServantFull } from "@/types/atlas-servant-full";
 
 async function fetchServant(region: string, id: string) {
+  // Adicionamos ?lang=en no final para forçar o nome/lore em inglês
   const res = await fetch(
-    `https://api.atlasacademy.io/nice/${region}/servant/${id}`
+    `https://api.atlasacademy.io/nice/${region}/servant/${id}?lang=en`
   );
   const data = await res.json();
+  if (data.name) {
+    data.name = data.name.replace(/Altria/g, "Artoria");
+  }
   return data;
 }
 
@@ -25,20 +29,22 @@ export function useAtlasServant() {
 
     (async () => {
       let data = await fetchServant(region, id);
-
+if (data.name.includes("Altria")) {
+  data.name = data.name.replace(/Altria/g, "Artoria");
+}
       //  Fallback JP se NA não tiver lore
       if (!data.profile?.story?.length && region !== "JP") {
         data = await fetchServant("JP", id);
       }
 
       // NORMALIZA IMAGENS
-      const faces = Object.values(
-        data.extraAssets?.faces?.ascension ?? {}
-      );
+      const facesAscension = Object.values(data.extraAssets?.faces?.ascension ?? {});
+const facesCostume = Object.values(data.extraAssets?.faces?.costume ?? {});
+const faces = [...facesAscension, ...facesCostume]; // Agora inclui as skins!
 
-      const charaGraph = Object.values(
-        data.extraAssets?.charaGraph?.ascension ?? {}
-      );
+const charaGraphAscension = Object.values(data.extraAssets?.charaGraph?.ascension ?? {});
+const charaGraphCostume = Object.values(data.extraAssets?.charaGraph?.costume ?? {});
+const charaGraph = [...charaGraphAscension, ...charaGraphCostume];
 
       //  NORMALIZA PROFILE
       const profile =

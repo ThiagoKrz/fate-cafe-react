@@ -15,7 +15,7 @@ export default function ServantCard({ servant }: Props) {
     >
       <img
         src={servant.face}
-        alt={servant.name}
+
         loading="lazy"
         className="w-full aspect-square object-cover rounded-md"
       />
@@ -26,7 +26,7 @@ export default function ServantCard({ servant }: Props) {
 
       {servant.originalName && (
         <span className="block text-xs text-gray-400 truncate">
-          {servant.originalName}
+
         </span>
       )}
 
