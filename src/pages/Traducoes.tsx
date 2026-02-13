@@ -11,9 +11,8 @@ const projects = [
     description:
       "O remake da lendária visual novel. Acompanhe Shiki Tohno e seu encontro com a princesa vampira Arcueid.",
     progress: [
-      { label: "Tradução (Roteiro)", value: 48 },
-      { label: "Revisão", value: 48 },
-      { label: "QC", value: 48 },
+      { label: "Tradução", value: 65 },
+      { label: "Revisão", value: 62 },
     ],
   },
   {
@@ -21,11 +20,10 @@ const projects = [
     image: fsn,
     title: "Fate/stay night REMASTERED",
     description:
-      "A Guerra do Santo Graal definitiva, agora em HD. Três rotas épicas aguardam você.",
+      "A Guerra do Santo Graal definitiva, agora em HD. Três rotas épicas aguardam você. Tradução por Meow Works, sendo adaptada e revisada para a versão remasterizada.",
     progress: [
-      { label: "Tradução", value: 80 },
-      { label: "Revisão", value: 1 },
-      { label: "QC", value: 1 },
+      { label: "Tradução", value: 100 },
+      { label: "Revisão", value: 5 },
     ],
   },
   {
@@ -36,8 +34,7 @@ const projects = [
       "A história de Aoko Aozaki na era moderna. Uma jornada mágica e visualmente deslumbrante.",
     progress: [
       { label: "Tradução", value: 2 },
-      { label: "Revisão", value: 1 },
-      { label: "QC", value: 0 },
+      { label: "Revisão", value: 2 },
     ],
   },
 ];
