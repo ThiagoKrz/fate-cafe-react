@@ -7,9 +7,8 @@ type ProgressItem = {
 
 // Configuração de cores dos botões
 const buttonVariants = {
-  default: "bg-[#D4A373] text-[#2A2320] hover:bg-[#C9A66B]", // Dourado (Padrão)
-  // Azul "Midnight" Ajustado (Mais saturado, menos preto)
-  blue: "bg-[#172554] text-white hover:bg-[#1e3a8a] border border-[#3b82f6]/20 shadow-lg", 
+  default: "bg-[#D4A373] text-[#2A2320] hover:bg-[#C9A66B]", // Dourado
+  blue: "bg-[#172554] text-white hover:bg-[#1e3a8a] border border-[#3b82f6]/20 shadow-lg", // Azul Profundo
 };
 
 interface ProjectCardProps {
@@ -21,7 +20,7 @@ interface ProjectCardProps {
   downloadAvailable?: boolean;
   downloadUrl?: string;
   downloadMessage?: string;
-  buttonVariant?: keyof typeof buttonVariants; // Propriedade opcional para cor
+  buttonVariant?: keyof typeof buttonVariants;
 }
 
 export function ProjectCard({
@@ -33,7 +32,7 @@ export function ProjectCard({
   downloadAvailable = false,
   downloadUrl,
   downloadMessage,
-  buttonVariant = "default", // Valor padrão é dourado
+  buttonVariant = "default",
 }: ProjectCardProps) {
   return (
     <article className="bg-[#3E322F] border border-[#5A4A44] rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row h-full">
@@ -84,7 +83,9 @@ export function ProjectCard({
         <div className="flex flex-col sm:flex-row gap-4 mt-auto">
           <Link
             to={`/traducoes/${slug}`}
-            className="w-full sm:w-auto text-center bg-transparent border border-[#D4A373] text-[#D4A373] font-bold py-3 px-6 rounded-lg hover:bg-[#5A4A44] transition-colors"
+            // MUDANÇA AQUI: Clareado de #5A4A44 para #866a5f
+            // Hover ajustado para #856D63 (mais claro ainda)
+            className="w-full sm:w-auto text-center bg-[#866a5f] text-[#EAE0D5] hover:text-white font-bold py-3 px-6 rounded-lg hover:bg-[#856D63] transition-colors shadow-md border border-transparent hover:border-[#D4A373]/30"
           >
             Página do Projeto
           </Link>
@@ -94,7 +95,6 @@ export function ProjectCard({
               href={downloadUrl}
               target="_blank"
               rel="noopener noreferrer"
-              // Aplica a classe baseada na variante escolhida
               className={`w-full sm:w-auto text-center font-bold py-3 px-6 rounded-lg transition-all ${buttonVariants[buttonVariant]}`}
             >
               {downloadMessage || "Download"}
