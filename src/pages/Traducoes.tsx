@@ -11,9 +11,13 @@ const projects = [
     description:
       "O remake da lendária visual novel. Acompanhe Shiki Tohno e seu encontro com a princesa vampira Arcueid.",
     progress: [
-      { label: "Tradução", value: 65 },
-      { label: "Revisão", value: 62 },
+      { label: "Tradução", value: 100 },
+      { label: "Revisão", value: 100 },
     ],
+    downloadAvailable: true,
+    downloadUrl: "https://drive.google.com/file/d/1iZ2jCEzitgSuIjZHxLFxLrgLV99DNgDL/view?usp=sharing",
+    downloadMessage: "Download (Parcial)",
+    buttonVariant: "blue", // Adicionado aqui
   },
   {
     slug: "fate-stay-night",
@@ -25,6 +29,8 @@ const projects = [
       { label: "Tradução", value: 100 },
       { label: "Revisão", value: 5 },
     ],
+    downloadAvailable: false,
+    // Sem variant, usa o padrão (mas ficará cinza pois está indisponível)
   },
   {
     slug: "mahou-tsukai-no-yoru",
@@ -36,6 +42,10 @@ const projects = [
       { label: "Tradução", value: 2 },
       { label: "Revisão", value: 2 },
     ],
+    downloadAvailable: true,
+    downloadUrl: "https://youtube.com/playlist?list=PL6dHvngBG8bomf_DftE3BdgQdNuoDLw1P&si=OoyeAjCP05I_bcJL",
+    downloadMessage: "(Leia com IA)",
+    buttonVariant: "blue", // Adicionado aqui
   },
 ];
 
@@ -58,13 +68,15 @@ export default function Traducoes() {
             </h3>
           </div>
 
-          <div className="space-y-8">
+          <div className="flex flex-col gap-8">
             {projects.map((project, index) => (
               <div
                 key={project.title}
                 style={{ animationDelay: `${index * 0.15}s` }}
+                className="animate-fade-in"
               >
-                <ProjectCard {...project} />
+                {/* O TypeScript pode reclamar do tipo aqui, então fazemos um cast */}
+                <ProjectCard {...(project as any)} />
               </div>
             ))}
           </div>

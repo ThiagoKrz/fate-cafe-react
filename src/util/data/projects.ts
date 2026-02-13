@@ -44,6 +44,8 @@ export const projectsDetails = {
 
   // Download e Versão
   downloadAvailable: true,
+  downloadUrl: "https://drive.google.com/file/d/1iZ2jCEzitgSuIjZHxLFxLrgLV99DNgDL/view?usp=sharing",
+  downloadMessage: "Download (Parcial)",
   version: "Patch Half-Moon (Rota Arcueid)",
   downloads: [
     { label: "Baixar Patch (Switch/Emulador)", url: "https://drive.google.com/file/d/1iZ2jCEzitgSuIjZHxLFxLrgLV99DNgDL/view?usp=sharing", variant: "primary" },

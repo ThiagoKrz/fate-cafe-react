@@ -6,10 +6,10 @@ export default function ProjectInstall() {
       </h3>
 
       <ol className="list-decimal list-inside space-y-2 text-lg text-[#EAE0D5]">
-        <li>Compre e instale o jogo original (Steam/Nuuvem/etc).</li>
-        <li>Baixe o patch de tradução quando disponível.</li>
-        <li>Extraia o conteúdo do .zip na pasta do jogo.</li>
-        <li>Substitua os arquivos quando solicitado.</li>
+        <li>Compre e instale a Rom do jogo em um emulador ou Nintendo Switch, VERSÃO JP APENAS.</li>
+        <li>Baixe o patch de tradução da Tsukihimates, e o patch de tradução PT-BR, anexados na aba Downloads.</li>
+        <li>Instale o patch de tradução Tsukihimates.</li>
+        <li>Coloque a pasta romfs dentro da pasta de mods do jogo.</li>
         <li>Execute o jogo normalmente.</li>
       </ol>
     </section>

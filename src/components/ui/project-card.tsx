@@ -1,11 +1,15 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 type ProgressItem = {
   label: string;
   value: number;
+};
+
+// Configuração de cores dos botões
+const buttonVariants = {
+  default: "bg-[#D4A373] text-[#2A2320] hover:bg-[#C9A66B]", // Dourado (Padrão)
+  // Azul "Midnight" Ajustado (Mais saturado, menos preto)
+  blue: "bg-[#172554] text-white hover:bg-[#1e3a8a] border border-[#3b82f6]/20 shadow-lg", 
 };
 
 interface ProjectCardProps {
@@ -15,6 +19,9 @@ interface ProjectCardProps {
   progress: ProgressItem[];
   slug: string;
   downloadAvailable?: boolean;
+  downloadUrl?: string;
+  downloadMessage?: string;
+  buttonVariant?: keyof typeof buttonVariants; // Propriedade opcional para cor
 }
 
 export function ProjectCard({
@@ -24,21 +31,32 @@ export function ProjectCard({
   progress,
   slug,
   downloadAvailable = false,
+  downloadUrl,
+  downloadMessage,
+  buttonVariant = "default", // Valor padrão é dourado
 }: ProjectCardProps) {
   return (
-    <article className="bg-[#3E322F] border border-[#5A4A44] rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
-      {/* Imagem */}
-      <img
-        src={image}
-        alt={title}
-        className="w-full md:w-1/3 h-64 md:h-auto object-cover"
-      />
+    <article className="bg-[#3E322F] border border-[#5A4A44] rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row h-full">
+      {/* Imagem com Link */}
+      <div className="w-full md:w-1/3 h-64 md:h-auto relative group">
+        <Link to={`/traducoes/${slug}`}>
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </Link>
+      </div>
 
       {/* Conteúdo */}
       <div className="p-6 flex flex-col justify-between flex-1">
         {/* Texto */}
         <div>
-          <h4 className="text-3xl font-bold text-white mb-2">{title}</h4>
+          <Link to={`/traducoes/${slug}`}>
+            <h4 className="text-3xl font-bold text-white mb-2 hover:text-[#D4A373] transition-colors">
+              {title}
+            </h4>
+          </Link>
 
           <p className="text-[#EAE0D5] text-sm mb-5">{description}</p>
         </div>
@@ -63,23 +81,26 @@ export function ProjectCard({
         </div>
 
         {/* Ações */}
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 mt-auto">
           <Link
             to={`/traducoes/${slug}`}
-            className="w-full sm:w-auto text-center bg-[#D4A373] text-[#2A2320] font-bold py-3 px-6 rounded-lg hover:bg-[#C9A66B] transition-colors"
+            className="w-full sm:w-auto text-center bg-transparent border border-[#D4A373] text-[#D4A373] font-bold py-3 px-6 rounded-lg hover:bg-[#5A4A44] transition-colors"
           >
             Página do Projeto
           </Link>
 
-          {downloadAvailable ? (
-            <Link
-              to="#"
-              className="w-full sm:w-auto text-center bg-[#D4A373] text-[#2A2320] font-bold py-3 px-6 rounded-lg hover:bg-[#C9A66B]"
+          {downloadAvailable && downloadUrl ? (
+            <a
+              href={downloadUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              // Aplica a classe baseada na variante escolhida
+              className={`w-full sm:w-auto text-center font-bold py-3 px-6 rounded-lg transition-all ${buttonVariants[buttonVariant]}`}
             >
-              Download
-            </Link>
+              {downloadMessage || "Download"}
+            </a>
           ) : (
-            <span className="w-full sm:w-auto text-center bg-gray-600 text-gray-400 font-bold py-3 px-6 rounded-lg cursor-not-allowed">
+            <span className="w-full sm:w-auto text-center bg-[#2A2320] border border-[#3E322F] text-gray-500 font-bold py-3 px-6 rounded-lg cursor-not-allowed">
               Download (Indisponível)
             </span>
           )}
