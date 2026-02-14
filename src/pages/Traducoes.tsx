@@ -11,8 +11,8 @@ const projects = [
     description:
       "O remake da lendária visual novel. Acompanhe Shiki Tohno e seu encontro com a princesa vampira Arcueid.",
     progress: [
-      { label: "Tradução", value: 100 },
-      { label: "Revisão", value: 100 },
+      { label: "Tradução", value: 63 },
+      { label: "Revisão", value: 62 },
     ],
     downloadAvailable: true,
     downloadUrl: "https://drive.google.com/file/d/1iZ2jCEzitgSuIjZHxLFxLrgLV99DNgDL/view?usp=sharing",
